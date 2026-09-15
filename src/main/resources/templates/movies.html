@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    ```
+    <title>Movies - Streaming Platform</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    ```
+
+</head>
+
+<body>
+
+<header>
+
+    ```
+    <h1>Streaming Platform</h1>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/movies}">Movies</a>
+        <a th:href="@{/series}">Series</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+    ```
+
+</header>
+
+<main>
+
+    ```
+    <section class="movies-section">
+
+        <h2>Movies</h2>
+
+        <p class="section-description">
+            Discover our latest movies and watch your favorites.
+        </p>
+
+
+        <div class="movie-grid">
+
+            <!-- Movie 1 -->
+            <div class="movie-card">
+
+                <div class="movie-image">
+                    <span>Movie 1</span>
+                </div>
+
+                <div class="movie-info">
+
+                    <h3>Example Movie</h3>
+
+                    <p>
+                        Action • 2026
+                    </p>
+
+                    <a href="#" class="btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 2 -->
+            <div class="movie-card">
+
+                <div class="movie-image">
+                    <span>Movie 2</span>
+                </div>
+
+                <div class="movie-info">
+
+                    <h3>Another Movie</h3>
+
+                    <p>
+                        Drama • 2026
+                    </p>
+
+                    <a href="#" class="btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 3 -->
+            <div class="movie-card">
+
+                <div class="movie-image">
+                    <span>Movie 3</span>
+                </div>
+
+                <div class="movie-info">
+
+                    <h3>New Adventure</h3>
+
+                    <p>
+                        Adventure • 2026
+                    </p>
+
+                    <a href="#" class="btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+    ```
+
+</main>
+
+<footer>
+
+    ```
+    <p>
+        &copy; 2026 Streaming Platform
+    </p>
+    ```
+
+</footer>
+
+</body>
+
+</html>

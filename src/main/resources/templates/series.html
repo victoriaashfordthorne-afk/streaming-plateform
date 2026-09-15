@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Series - Streaming Platform</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>Streaming Platform</h1>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/movies}">Movies</a>
+        <a th:href="@{/series}">Series</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="movies-section">
+
+        <h2>Series</h2>
+
+        <p class="section-description">
+            Discover our latest series and watch your favorites.
+        </p>
+
+        <div class="movie-grid">
+
+            <div class="movie-card" th:each="serie : ${series}">
+
+                <div class="movie-image">
+                    <span th:text="${serie}">Series</span>
+                </div>
+
+                <div class="movie-info">
+
+                    <h3 th:text="${serie}">
+                        Series Title
+                    </h3>
+
+                    <p>
+                        Series • 2026
+                    </p>
+
+                    <a href="#" class="btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        &copy; 2026 Streaming Platform
+    </p>
+
+</footer>
+
+</body>
+</html>

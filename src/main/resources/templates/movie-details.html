@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Movie Details - Streaming Platform</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>Streaming Platform</h1>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/movies}">Movies</a>
+        <a th:href="@{/series}">Series</a>
+        <a th:href="@{/profile}">My Profile</a>
+        <a th:href="@{/login}">Login</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="movie-details-section">
+
+        <div class="movie-details-container">
+
+            <div class="movie-details-image">
+                <span>Movie Poster</span>
+            </div>
+
+            <div class="movie-details-info">
+
+                <h2>Avengers</h2>
+
+                <p class="movie-meta">
+                    Action • Adventure • 2026
+                </p>
+
+                <p class="movie-description">
+                    The Avengers come together to face a powerful threat
+                    and protect the world from destruction.
+                </p>
+
+                <p>
+                    <strong>Duration:</strong> 2h 15min
+                </p>
+
+                <p>
+                    <strong>Rating:</strong> 8.5/10
+                </p>
+
+                <div class="movie-details-actions">
+
+                    <a th:href="@{/watch}" class="btn">
+                        ▶ Watch Now
+                    </a>
+
+                    <a href="#" class="btn">
+                        + Add to My List
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        &copy; 2026 Streaming Platform
+    </p>
+
+</footer>
+
+</body>
+</html>

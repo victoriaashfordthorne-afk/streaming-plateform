@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Streaming Platform</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>Streaming Platform</h1>
+
+    <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/movies}">Movies</a>
+        <a th:href="@{/series}">Series</a>
+        <a th:href="@{/profile}">My Profile</a>
+        <a th:href="@{/admin}">Admin</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section class="admin-section">
+
+        <div class="admin-container">
+
+            <h2>Admin Dashboard</h2>
+
+            <p class="section-description">
+                Manage your Streaming Platform.
+            </p>
+
+            <div class="admin-grid">
+
+                <div class="admin-card">
+
+                    <h3>Movies</h3>
+
+                    <p>
+                        Add, edit and remove movies.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Manage Movies
+                    </a>
+
+                </div>
+
+                <div class="admin-card">
+
+                    <h3>Series</h3>
+
+                    <p>
+                        Add, edit and remove series.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Manage Series
+                    </a>
+
+                </div>
+
+                <div class="admin-card">
+
+                    <h3>Users</h3>
+
+                    <p>
+                        View and manage platform users.
+                    </p>
+
+                    <a href="#" class="btn">
+                        Manage Users
+                    </a>
+
+                </div>
+
+                <div class="admin-card">
+
+                    <h3>Statistics</h3>
+
+                    <p>
+                        View platform statistics.
+                    </p>
+
+                    <a href="#" class="btn">
+                        View Statistics
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        &copy; 2026 Streaming Platform
+    </p>
+
+</footer>
+
+</body>
+</html>
