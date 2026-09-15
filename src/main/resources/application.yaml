@@ -8,7 +8,7 @@ spring:
     password: ${SUPABASE_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 
-  jpa:
+    jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -41,4 +41,4 @@ spring:
               - email
 
 server:
-  port: ${PORT:8080}
+  port: 8080

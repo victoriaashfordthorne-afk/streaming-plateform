@@ -49,44 +49,51 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         http
+                .cors(cors -> {})
+                .csrf(csrf -> csrf
+                        .ignoringRequestMatchers("/api/**")
+                )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
                                 "/",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
+
                                 "/login",
                                 "/register",
                                 "/verification",
                                 "/forgot-password",
                                 "/reset-password",
+
                                 "/api/auth/inscription",
                                 "/api/auth/verification-code",
                                 "/api/auth/renvoi-code",
                                 "/api/auth/connexion",
                                 "/api/auth/connexion-google",
                                 "/api/auth/callback-google",
+
+                                "/api/user/**",
+
                                 "/oauth2/**",
                                 "/login/oauth2/**",
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
-                        )
-                        .permitAll()
-
-                        .anyRequest()
-                        .authenticated()
+                        ).permitAll()
+                        .anyRequest().authenticated()
                 )
-
                 .authenticationProvider(authenticationProvider())
-
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(
+                                org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED
+                        )
+                )
                 .oauth2Login(oauth -> oauth
                         .successHandler(oAuth2LoginSuccessHandler)
                 )
-
                 .logout(logout -> logout
                         .logoutUrl("/api/auth/deconnexion")
                         .logoutSuccessUrl("/")
