@@ -38,11 +38,12 @@ public class UserServices {
 
     }
 
-    public UserDto update(Long id,UserDto dto){
-        User  existingUser  = userRepository.findById(id)
-                .orElseThrow(()->new RuntimeException("User not found with id:"+ id));
+    public UserDto update(Long id, UserDto dto) {
 
-        existingUser.setId(dto.id());
+        User existingUser = userRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("User not found with id: " + id));
+
         existingUser.setName(dto.name());
         existingUser.setEmail(dto.email());
         existingUser.setActiveAccount(dto.activeAccount());
@@ -50,6 +51,7 @@ public class UserServices {
         existingUser.setDateCreation(dto.dateCreation());
 
         User updateUser = userRepository.save(existingUser);
+
         return userMapper.toDto(updateUser);
     }
     public void deleteUser(Long id){
