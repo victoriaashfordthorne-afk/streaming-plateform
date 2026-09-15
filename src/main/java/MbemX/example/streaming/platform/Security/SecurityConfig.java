@@ -36,6 +36,7 @@ public class SecurityConfig {
 
         return configuration.getAuthenticationManager();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
 
@@ -58,24 +59,19 @@ public class SecurityConfig {
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
-
                                 "/login",
                                 "/register",
                                 "/verification",
                                 "/forgot-password",
                                 "/reset-password",
-
                                 "/api/auth/inscription",
                                 "/api/auth/verification-code",
                                 "/api/auth/renvoi-code",
-
                                 "/api/auth/connexion",
                                 "/api/auth/connexion-google",
                                 "/api/auth/callback-google",
-
                                 "/oauth2/**",
                                 "/login/oauth2/**",
-
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         )
