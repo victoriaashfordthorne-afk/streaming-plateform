@@ -6,6 +6,7 @@ import MbemX.example.streaming.platform.Mapper.UserMapper;
 import MbemX.example.streaming.platform.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -17,9 +18,10 @@ public class UserServices {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
     }
-    public List<UserDto> findAllUser(){
-        List<User> dto = userRepository.findAll();
-        return dto.stream()
+    public List<UserDto> getAll() {
+        return userRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(User::getId))
                 .map(userMapper::toDto)
                 .toList();
     }
@@ -43,7 +45,7 @@ public class UserServices {
         User existingUser = userRepository.findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("User not found with id: " + id));
-
+        existingUser.setId(dto.id());
         existingUser.setName(dto.name());
         existingUser.setEmail(dto.email());
         existingUser.setActiveAccount(dto.activeAccount());

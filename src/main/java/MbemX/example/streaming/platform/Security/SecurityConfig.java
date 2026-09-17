@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.config.http.SessionCreationPolicy;
 
 @Configuration
 public class SecurityConfig {
@@ -30,6 +31,7 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration) throws Exception {
@@ -77,6 +79,7 @@ public class SecurityConfig {
                                 "/api/auth/callback-google",
 
                                 "/api/user/**",
+                                "/api/activation-codes/**",
 
                                 "/oauth2/**",
                                 "/login/oauth2/**",
@@ -88,7 +91,7 @@ public class SecurityConfig {
                 .authenticationProvider(authenticationProvider())
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(
-                                org.springframework.security.config.http.SessionCreationPolicy.IF_REQUIRED
+                                SessionCreationPolicy.IF_REQUIRED
                         )
                 )
                 .oauth2Login(oauth -> oauth

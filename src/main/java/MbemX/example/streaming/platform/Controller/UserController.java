@@ -27,9 +27,8 @@ public class UserController {
             summary = "Get all users",
             description = "Returns the list of all users"
     )
-    public ResponseEntity<List<UserDto>> findAllUser(){
-     return ResponseEntity.ok(userServices.findAllUser());
-
+    public ResponseEntity<List<UserDto>> findAllUser() {
+        return ResponseEntity.ok(userServices.getAll());
     }
     @GetMapping("/{id}")
     @Operation(
