@@ -71,6 +71,7 @@ public class SecurityConfig {
                                 "/forgot-password",
                                 "/reset-password",
 
+                                // Authentication
                                 "/api/auth/inscription",
                                 "/api/auth/verification-code",
                                 "/api/auth/renvoi-code",
@@ -78,11 +79,18 @@ public class SecurityConfig {
                                 "/api/auth/connexion-google",
                                 "/api/auth/callback-google",
 
+                                // Entity APIs
                                 "/api/user/**",
                                 "/api/activation-codes/**",
+                                "/api/comments/**",
+                                "/api/reactions/**",
+                                "/api/email-history/**",
 
+                                // OAuth2
                                 "/oauth2/**",
                                 "/login/oauth2/**",
+
+                                // Swagger
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**"
                         ).permitAll()
