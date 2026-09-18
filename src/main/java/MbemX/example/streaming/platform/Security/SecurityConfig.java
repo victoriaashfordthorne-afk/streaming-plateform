@@ -79,12 +79,25 @@ public class SecurityConfig {
                                 "/api/auth/connexion-google",
                                 "/api/auth/callback-google",
 
+
                                 // Entity APIs
                                 "/api/user/**",
+
                                 "/api/activation-codes/**",
+                                // Files + nested comments
+                                "/api/fichiers/**",
+
+                                // Authentication
+                                "/api/auth/**",
+
+                                // Comments
                                 "/api/comments/**",
+
+                                // Reactions
                                 "/api/reactions/**",
-                                "/api/email-history/**",
+
+                                // Email history
+                                "/api/email-histories/**",
 
                                 // OAuth2
                                 "/oauth2/**",
