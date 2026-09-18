@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/fichiers")
+@RequestMapping("/api/comment")
 @Tag(
         name = "Comments",
         description = "Manage comments on media files"

@@ -1,26 +1,17 @@
 package MbemX.example.streaming.platform.Controller;
 
-import MbemX.example.streaming.platform.Dto.FileDto;
 import MbemX.example.streaming.platform.Dto.ReactionDto;
 import MbemX.example.streaming.platform.Services.ReactionServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.persistence.Table;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import MbemX.example.streaming.platform.Enums.MediaType;
 
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-
-import java.net.MalformedURLException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reaction api")
+@RequestMapping("/api/reactions")
 @Tag(
         name = "Reactions",
         description = "Endpoints for managing reactions"
@@ -29,7 +20,7 @@ public class ReactionController {
 
     private final ReactionServices reactionServices;
 
-    public ReactionController(ReactionServices reactionServices){
+    public ReactionController(ReactionServices reactionServices) {
         this.reactionServices = reactionServices;
     }
 
@@ -75,9 +66,7 @@ public class ReactionController {
         );
     }
 
-
-
-    @PostMapping("all")
+    @PostMapping("/all")
     @Operation(
             summary = "Add or change a reaction",
             description = "Adds a like/dislike or changes the user's existing reaction"
