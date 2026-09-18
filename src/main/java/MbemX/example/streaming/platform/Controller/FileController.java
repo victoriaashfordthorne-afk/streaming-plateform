@@ -2,8 +2,6 @@ package MbemX.example.streaming.platform.Controller;
 
 import MbemX.example.streaming.platform.Dto.FileDto;
 import MbemX.example.streaming.platform.Enums.MediaType;
-import MbemX.example.streaming.platform.Mapper.FileMapper;
-import MbemX.example.streaming.platform.Repository.FileRepository;
 import MbemX.example.streaming.platform.Services.FileServices;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,7 +9,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -28,13 +25,9 @@ import java.util.List;
 public class FileController {
 
     private final FileServices fileServices;
-    private final FileRepository fileRepository;
-    private final FileMapper fileMapper;
 
-    public FileController(FileServices fileServices,FileRepository fileRepository,FileMapper fileMapper) {
+    public FileController(FileServices fileServices) {
         this.fileServices = fileServices;
-        this.fileRepository = fileRepository;
-        this.fileMapper = fileMapper;
     }
 
     // =========================================================
@@ -42,36 +35,36 @@ public class FileController {
     // POST /api/fichiers
     // =========================================================
 
-    @PostMapping
+    @PostMapping(consumes = "multipart/form-data")
     @Operation(
             summary = "Upload a file",
             description = "Upload a video, photo or music file"
     )
     public ResponseEntity<FileDto> uploadFile(
-            @RequestParam("file") MultipartFile file,
+            @RequestPart("file") MultipartFile file,
             @RequestParam("userId") Long userId
     ) throws IOException {
 
-        FileDto uploadedFile = fileServices.uploadFile(file, userId);
+        FileDto uploadedFile =
+                fileServices.uploadFile(file, userId);
 
         return ResponseEntity.ok(uploadedFile);
     }
 
-
     // =========================================================
     // 2. LIST FILES
-    // GET /api/fichiers
-    // GET /api/fichiers?type=VIDEO
+    // GET /api/fichiers?userId=1
+    // GET /api/fichiers?userId=1&type=VIDEO
     // =========================================================
 
-    @GetMapping
+    @GetMapping("/all")
     @Operation(
             summary = "List files",
             description = "List files and optionally filter by VIDEO, PHOTO or MUSIC"
     )
     public ResponseEntity<List<FileDto>> findFiles(
-            @RequestParam(required = false) MediaType type,
-            @RequestParam Long userId
+            @RequestParam Long userId,
+            @RequestParam(required = false) MediaType type
     ) {
 
         List<FileDto> files;
@@ -84,7 +77,6 @@ public class FileController {
 
         return ResponseEntity.ok(files);
     }
-
 
     // =========================================================
     // 3. VIEW FILE INFORMATION
@@ -104,17 +96,9 @@ public class FileController {
 
         return ResponseEntity.ok(file);
     }
-    public List<FileDto> findByUserIdAndType(Long userId, MediaType type) {
-
-        return  fileRepository
-                .findByUserIdAndTypeMedia(userId, type)
-                .stream()
-                .map(fileMapper::fileDto)
-                .toList();
-    }
 
     // =========================================================
-    // 4. DOWNLOAD / READ FILE
+    // 4. DOWNLOAD FILE
     // GET /api/fichiers/{id}/telecharger
     // =========================================================
 
@@ -140,7 +124,9 @@ public class FileController {
         return ResponseEntity.ok()
                 .header(
                         HttpHeaders.CONTENT_DISPOSITION,
-                        "attachment; filename=\"" + resource.getFilename() + "\""
+                        "attachment; filename=\"" +
+                                resource.getFilename() +
+                                "\""
                 )
                 .header(
                         HttpHeaders.CONTENT_TYPE,

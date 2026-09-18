@@ -82,22 +82,11 @@ public class SecurityConfig {
 
                                 // Entity APIs
                                 "/api/user/**",
-
                                 "/api/activation-codes/**",
-                                // Files + nested comments
                                 "/api/fichiers/**",
-
-                                // Authentication
-                                "/api/auth/**",
-
-                                // Comments
-                                "/api/comments/**",
-
-                                // Reactions
                                 "/api/reactions/**",
-
-                                // Email history
                                 "/api/email-histories/**",
+                                "/api/auth/**",
 
                                 // OAuth2
                                 "/oauth2/**",

@@ -66,7 +66,7 @@ public class ReactionController {
         );
     }
 
-    @PostMapping("/all")
+    @PostMapping("/add")
     @Operation(
             summary = "Add or change a reaction",
             description = "Adds a like/dislike or changes the user's existing reaction"

@@ -1,7 +1,5 @@
 package MbemX.example.streaming.platform.Controller;
 
-
-
 import MbemX.example.streaming.platform.Dto.EmailHistoryDto;
 import MbemX.example.streaming.platform.Services.EmailHistoryServices;
 
@@ -29,12 +27,6 @@ public class EmailHistoryController {
         this.emailHistoryServices = emailHistoryServices;
     }
 
-
-    // =========================================================
-    // 1. GET ALL EMAIL HISTORIES
-    // GET /api/email-histories
-    // =========================================================
-
     @GetMapping("/all")
     @Operation(
             summary = "Get all email histories",
@@ -46,12 +38,6 @@ public class EmailHistoryController {
                 emailHistoryServices.findAll()
         );
     }
-
-
-    // =========================================================
-    // 2. GET EMAIL HISTORY BY ID
-    // GET /api/email-histories/{id}
-    // =========================================================
 
     @GetMapping("/{id}")
     @Operation(
@@ -66,12 +52,6 @@ public class EmailHistoryController {
         );
     }
 
-
-    // =========================================================
-    // 3. CREATE EMAIL HISTORY
-    // POST /api/email-histories
-    // =========================================================
-
     @PostMapping("/add")
     @Operation(
             summary = "Create email history",
@@ -84,12 +64,6 @@ public class EmailHistoryController {
                 emailHistoryServices.saveEmailHistory(dto)
         );
     }
-
-
-    // =========================================================
-    // 4. UPDATE EMAIL HISTORY
-    // PUT /api/email-histories/{id}
-    // =========================================================
 
     @PutMapping("/{id}")
     @Operation(
@@ -104,12 +78,6 @@ public class EmailHistoryController {
                 emailHistoryServices.updateHistory(id, dto)
         );
     }
-
-
-    // =========================================================
-    // 5. DELETE EMAIL HISTORY
-    // DELETE /api/email-histories/{id}
-    // =========================================================
 
     @DeleteMapping("/{id}")
     @Operation(

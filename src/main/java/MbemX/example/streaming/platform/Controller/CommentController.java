@@ -1,7 +1,5 @@
 package MbemX.example.streaming.platform.Controller;
 
-
-
 import MbemX.example.streaming.platform.Dto.CommentDto;
 import MbemX.example.streaming.platform.Services.CommentServices;
 
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/comment")
+@RequestMapping("/api/fichiers")
 @Tag(
         name = "Comments",
         description = "Manage comments on media files"
@@ -27,9 +25,8 @@ public class CommentController {
         this.commentServices = commentServices;
     }
 
-
     // =========================================================
-    // 1. ADD A COMMENT TO A FILE
+    // 1. ADD COMMENT TO A FILE
     // POST /api/fichiers/{id}/commentaires
     // =========================================================
 
@@ -42,10 +39,6 @@ public class CommentController {
             @PathVariable Long id,
             @RequestBody CommentDto dto) {
 
-        /*
-         * The file ID comes from the URL.
-         * Therefore we use it instead of trusting dto.fileId().
-         */
         CommentDto commentDto = new CommentDto(
                 dto.id(),
                 dto.content(),
@@ -59,7 +52,6 @@ public class CommentController {
 
         return ResponseEntity.ok(savedComment);
     }
-
 
     // =========================================================
     // 2. GET COMMENTS OF A FILE
